@@ -51,50 +51,13 @@
                         </div><!-- CHIUSURA SEARCH BOX -->
                         <div class="content-wrapper">
                             <ul class="contact-list">
-                                <li class="contact active">
-                                    <img src="img/avatar_1.jpg" alt="User1 Propic" class="propic">
+                                <li
+                                class="contact" 
+                                v-for="(contact, index) in contacts"
+                                :class="{active: active == index}">
+                                    <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="'User' + contact.avatar + ' Propic'" class="propic">
                                     <div class="text-box">
-                                        <p>Michele</p>
-                                        <p class="secondary-text smallest-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <div class="date-box">
-                                        <p class="smallest-text secondary-text">12:00</p>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <img src="img/avatar_1.jpg" alt="User1 Propic" class="propic">
-                                    <div class="text-box">
-                                        <p>Michele</p>
-                                        <p class="secondary-text smallest-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <div class="date-box">
-                                        <p class="smallest-text secondary-text">12:00</p>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <img src="img/avatar_1.jpg" alt="User1 Propic" class="propic">
-                                    <div class="text-box">
-                                        <p>Michele</p>
-                                        <p class="secondary-text smallest-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <div class="date-box">
-                                        <p class="smallest-text secondary-text">12:00</p>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <img src="img/avatar_1.jpg" alt="User1 Propic" class="propic">
-                                    <div class="text-box">
-                                        <p>Michele</p>
-                                        <p class="secondary-text smallest-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <div class="date-box">
-                                        <p class="smallest-text secondary-text">12:00</p>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <img src="img/avatar_1.jpg" alt="User1 Propic" class="propic">
-                                    <div class="text-box">
-                                        <p>Michele</p>
+                                        <p>{{contact.name}}</p>
                                         <p class="secondary-text smallest-text">Ultimo messaggio inviato</p>
                                     </div>
                                     <div class="date-box">
