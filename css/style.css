@@ -172,6 +172,7 @@ aside .contact-box .contact-list {
 aside .contact-box .contact-list .contact {
     padding: 0.5rem 1rem;
     background-color: white;
+    cursor: pointer;
     display: flex;
 }
 

@@ -54,7 +54,9 @@
                                 <li
                                 class="contact" 
                                 v-for="(contact, index) in contacts"
-                                :class="{active: active == index}">
+                                :class="{active: active == index}"
+                                @click="active = index"
+                                >
                                     <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="'User' + contact.avatar + ' Propic'" class="propic">
                                     <div class="text-box">
                                         <p>{{contact.name}}</p>
@@ -73,9 +75,9 @@
                 <main>
                     <header>
                         <div class="active-chat-info">
-                            <img src="img/avatar_1.jpg" alt="User1 Propic" class="propic">
+                            <img :src="'img/avatar' + contacts[active].avatar +'.jpg'" :alt="'User' + contacts[active].avatar + 'Propic'" class="propic">
                             <div class="text-box">
-                                <p class="small-text">Michele</p>
+                                <p class="small-text">{{contacts[active].name}}</p>
                                 <p class="smallest-text secondary-text">Ultimo accesso alle 12:00</p>
                             </div>
                         </div><!-- CHIUSURA USER INFO -->
@@ -86,13 +88,15 @@
                         </div><!-- CHIUSURA BUTTON BOX -->
                     </header><!-- CHIUSURA MAIN HEADER -->
                     <div class="conversation-box">
-                        <div class="message sent">
-                            <p>Hai portato a spasso il cane?</p>
-                            <span class="date secondary-text smallest-text">15:30</span>
-                        </div>
-                        <div class="message received">
-                            <p>messaggio di risposta</p>
-                            <span class="date secondary-text smallest-text">15:30</span>
+                        <div
+                        v-for="message in contacts[active].messages"
+                        class="message"
+                        :class="{
+                            sent: message.status == 'sent',
+                            received: message.status == 'received'}"
+                        >
+                            <p>{{message.message}}</p>
+                            <span class="date secondary-text smallest-text">{{message.date.slice(11,16)}}</span>
                         </div>
                     </div>
                     <div class="message-box">
