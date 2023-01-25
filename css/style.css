@@ -5,7 +5,14 @@
     box-sizing: border-box;
 }
 
+/* GENERALE */
+body {
+    height: 100vh;
+    
+}
+
 /* TESTO */
 body * {
     font-family: 'Open Sans', sans-serif;
 }
+
