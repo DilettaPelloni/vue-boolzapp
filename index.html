@@ -103,7 +103,7 @@
                         <button>
                             <i class="fa-regular fa-face-smile fa-xl"></i>
                         </button>
-                        <input type="text" placeholder="Scrivi un messaggio">
+                        <input v-model="newMessage" @keyup.enter="sendMessage()" type="text" placeholder="Scrivi un messaggio">
                         <button>
                             <i class="fa-solid fa-microphone fa-xl"></i>
                         </button>
