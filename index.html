@@ -46,14 +46,14 @@
                         <div class="search-box">
                             <div class="search-container">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                                <input @keyup="checkSearch()" v-model="searchText" type="text" placeholder="Cerca o inizia una nuova chat">
                             </div><!-- CHIUSURA SEARCH CONTAINER -->
                         </div><!-- CHIUSURA SEARCH BOX -->
                         <div class="content-wrapper">
                             <ul class="contact-list">
                                 <li
                                 class="contact" 
-                                v-for="(contact, index) in contacts"
+                                v-for="(contact, index) in activeContacts"
                                 :class="{active: active == index}"
                                 @click="active = index"
                                 >

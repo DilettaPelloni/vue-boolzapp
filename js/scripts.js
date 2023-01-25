@@ -5,6 +5,7 @@ createApp({
         return {
             active: 0,
             newMessage: '',
+            searchText: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -170,6 +171,11 @@ createApp({
             ]//contacts
         }//return
     },//data
+    computed: {
+        activeContacts() {
+            return this.contacts.filter(contact => contact.visible)
+        }
+    },//computed
     methods: {
         sendMessage: function() {
             if(this.newMessage != '') {
@@ -187,11 +193,19 @@ createApp({
                     });
                 }, 1000);
             }
-        }//sendMessage
+        },//sendMessage
+        checkSearch: function() {
+            this.contacts.forEach((contact) => {
+                if((contact.name.toLowerCase().includes(this.searchText.toLowerCase()))) {
+                    contact.visible = true;
+                }
+                else {
+                    contact.visible = false;
+                }
+            })
+        }
     },//methods
     mounted() {
 		
 	}//mounted
 }).mount('#app');
-
-console.log(Date());
