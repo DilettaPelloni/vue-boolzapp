@@ -194,8 +194,37 @@ main {
 }
 
 main .conversation-box {
-    flex-grow: 1;
+    padding: 2rem;
     background-image: url('../img/mine.jpg');
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+main .conversation-box .message {
+    margin-bottom: 2rem;
+    padding: 1rem 3rem 1rem 1rem;
+    max-width: 80%;
+    text-align: justify;
+    border-radius: 10px;
+    position: relative;
+}
+
+main .conversation-box .message.sent {
+    background-color: #d5f9ba;
+    align-self: flex-end;
+}
+
+main .conversation-box .message.received {
+    background-color: white;
+
+}
+
+main .conversation-box .message .date {
+    position:absolute;
+    right: 0.5rem;
+    bottom: 0.5rem
 }
 
 main .message-box {
