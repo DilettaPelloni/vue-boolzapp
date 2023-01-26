@@ -4,6 +4,7 @@ createApp({
     data() {
         return {
             dropMenu: null,
+            chatMenu: null,
             active: 0,
             newMessage: '',
             searchText: '',
@@ -205,20 +206,33 @@ createApp({
                 }
             })
         },//checkSearch
-        toggleDropMenu: function(index) {
-            if(this.dropMenu != index) {
-                this.dropMenu = index;
+        toggleMenu: function(index, menu) {
+            if (menu == 'dropMenu') {
+                if(this.dropMenu != index) {
+                    this.dropMenu = index;
+                }
+                else {
+                    this.dropMenu = null;
+                }
             }
-            else {
-                this.dropMenu = null;
+            else if (menu == 'chatMenu') {
+                if(this.chatMenu != index) {
+                    this.chatMenu = index;
+                }
+                else {
+                    this.chatMenu = null;
+                }
             }
-        },//toggleDropMenu
+        },//toggleMenu
         deleteMsg: function(array, index) {
             array.splice(index, 1);
             this.dropMenu = null;
         },//deleteMsg
         getLastMessage: function(contact) {
             if( contact.messages.length > 0) {
+                if (contact.messages[contact.messages.length - 1].message.length > 35) {
+                    return contact.messages[contact.messages.length - 1].message.substring(0, 35) + ' ...';
+                }
                 return contact.messages[contact.messages.length - 1].message;
             }
             else {

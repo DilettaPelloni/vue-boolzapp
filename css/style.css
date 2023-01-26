@@ -13,6 +13,7 @@
     --dark-gray: #6b7376;
     --light-blue: #8edafc;
     --light-green: #d5f9ba;
+    --light-red: #f9baba;
     --secondary-text: #8d9396;
 }
 /* GENERALE */
@@ -165,12 +166,14 @@ aside {
     list-style: none;
     background-color: white;
     overflow-y: auto;
+    flex-grow: 1;
 }
 
 .contact-box .contact-list .contact {
     padding: 0.5rem 1rem;
     background-color: white;
     cursor: pointer;
+    position: relative;
     display: flex;
 }
 
@@ -184,6 +187,45 @@ aside {
 
 .contact-box .contact-list .contact .text-box {
     flex-grow: 1;
+}
+
+.contact-box .contact-list .contact button {
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    color: white;
+    background-color: transparent;
+    opacity: 0;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0.2rem;
+    right: 0.5rem;
+    z-index: 20;
+}
+
+.contact-box .contact-list .contact:hover button {
+    background-color: var(--light-green);
+    opacity: 1;
+}
+
+.contact-box .contact-list .contact .drop {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: var(--nq-white);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 90%;
+    right: 0.5rem;
+    z-index: 30;
+}
+
+.contact-box .contact-list .contact .drop > p {
+    padding: 0.5rem;
+}
+
+.contact-box .contact-list .contact .drop:hover > p {
+    background-color: var(--light-red);
 }
 
 /* MAIN */

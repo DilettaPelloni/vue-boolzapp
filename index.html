@@ -64,6 +64,14 @@
                                 <div class="date-box">
                                     <p class="smallest-text secondary-text">{{getLastDate(contact)}}</p>
                                 </div>
+                                <button @click.stop="toggleMenu(index, 'chatMenu')">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <div class="drop" v-if="chatMenu == index">
+                                    <p class="small-text" @click="">
+                                        Cancella chat
+                                    </p>
+                                </div>
                             </li>
                         </ul>
                     </div><!-- CHIUSURA CONTACT BOX -->
@@ -95,7 +103,7 @@
                         >
                             <p>{{message.message}}</p>
                             <span class="date secondary-text smallest-text">{{message.date.slice(11,16)}}</span>
-                            <button @click="toggleDropMenu(index)">
+                            <button @click="toggleMenu(index, 'dropMenu')">
                                 <i class="fa-solid fa-chevron-down"></i>
                             </button>
                             <div class="drop" v-if="dropMenu == index">
