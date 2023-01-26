@@ -55,6 +55,7 @@
                             v-for="(contact, index) in activeContacts"
                             :class="{active: active == index}"
                             @click="active = index"
+                            @contextmenu.prevent="toggleMenu(index, 'chatMenu')"
                             >
                                 <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="'User' + contact.avatar + ' Propic'" class="propic">
                                 <div class="text-box">
