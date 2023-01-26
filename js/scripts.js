@@ -3,6 +3,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            dropMenu: null,
             active: 0,
             newMessage: '',
             searchText: '',
@@ -203,7 +204,35 @@ createApp({
                     contact.visible = false;
                 }
             })
-        }
+        },//checkSearch
+        toggleDropMenu: function(index) {
+            if(this.dropMenu != index) {
+                this.dropMenu = index;
+            }
+            else {
+                this.dropMenu = null;
+            }
+        },//toggleDropMenu
+        deleteMsg: function(array, index) {
+            array.splice(index, 1);
+            this.dropMenu = null;
+        },//deleteMsg
+        getLastMessage: function(contact) {
+            if( contact.messages.length > 0) {
+                return contact.messages[contact.messages.length - 1].message;
+            }
+            else {
+                return 'Nessun messaggio'
+            }
+        },//getLastMessage
+        getLastDate: function(contact) {
+            if( contact.messages.length > 0) {
+                return contact.messages[contact.messages.length - 1].date.slice(11,16);
+            }
+            else {
+                return ''
+            }
+        }//getLastDate
     },//methods
     mounted() {
 		

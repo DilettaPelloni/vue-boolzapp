@@ -59,10 +59,10 @@
                                 <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="'User' + contact.avatar + ' Propic'" class="propic">
                                 <div class="text-box">
                                     <p>{{contact.name}}</p>
-                                    <p class="secondary-text smallest-text">{{contact.messages[contact.messages.length - 1].message}}</p>
+                                    <p class="secondary-text smallest-text">{{getLastMessage(contact)}}</p>
                                 </div>
                                 <div class="date-box">
-                                    <p class="smallest-text secondary-text">{{contact.messages[contact.messages.length - 1].date.slice(11,16)}}</p>
+                                    <p class="smallest-text secondary-text">{{getLastDate(contact)}}</p>
                                 </div>
                             </li>
                         </ul>
@@ -87,7 +87,7 @@
                     </header><!-- CHIUSURA MAIN HEADER -->
                     <div class="conversation-box">
                         <div
-                        v-for="message in contacts[active].messages"
+                        v-for="(message, index) in contacts[active].messages"
                         class="message"
                         :class="{
                             sent: message.status == 'sent',
@@ -95,6 +95,14 @@
                         >
                             <p>{{message.message}}</p>
                             <span class="date secondary-text smallest-text">{{message.date.slice(11,16)}}</span>
+                            <button @click="toggleDropMenu(index)">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <div class="drop" v-if="dropMenu == index">
+                                <p class="small-text" @click="deleteMsg(contacts[active].messages, index)">
+                                    Cancella messaggio
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="message-box">
