@@ -74,7 +74,7 @@ createApp({
                     ],
                 },
                 {
-                    name: 'Luisa',
+                    name: 'Alessandro B.',
                     avatar: '_4',
                     visible: true,
                     messages: [
@@ -174,20 +174,20 @@ createApp({
     computed: {
         activeContacts() {
             return this.contacts.filter(contact => contact.visible)
-        }
+        },//activeContacts
     },//computed
     methods: {
         sendMessage: function() {
             if(this.newMessage != '') {
                 this.contacts[this.active].messages.push({
-                    date: Date(),
+                    date: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
                     message: this.newMessage,
                     status: 'sent'
                 });
                 this.newMessage = '';
                 setTimeout (() => {
                     this.contacts[this.active].messages.push({
-                        date: Date(),
+                        date: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
                         message: 'Messaggio di risposta!',
                         status: 'received'
                     });

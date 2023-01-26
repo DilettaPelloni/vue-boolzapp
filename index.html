@@ -59,10 +59,10 @@
                                 <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="'User' + contact.avatar + ' Propic'" class="propic">
                                 <div class="text-box">
                                     <p>{{contact.name}}</p>
-                                    <p class="secondary-text smallest-text">Ultimo messaggio inviato</p>
+                                    <p class="secondary-text smallest-text">{{contact.messages[contact.messages.length - 1].message}}</p>
                                 </div>
                                 <div class="date-box">
-                                    <p class="smallest-text secondary-text">12:00</p>
+                                    <p class="smallest-text secondary-text">{{contact.messages[contact.messages.length - 1].date.slice(11,16)}}</p>
                                 </div>
                             </li>
                         </ul>
@@ -112,6 +112,7 @@
         </div>
         <!-- JS -->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3.2.1/build/global/luxon.min.js"></script>
         <script src="js/scripts.js"></script>
     </body>
 </html>

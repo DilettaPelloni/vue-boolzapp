@@ -206,9 +206,10 @@ main {
 }
 
 .conversation-box .message {
-    margin-bottom: 2rem;
-    padding: 1rem 3rem 1rem 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
     max-width: 80%;
+    min-width: 45%;
     text-align: justify;
     border-radius: 10px;
     position: relative;
@@ -230,7 +231,6 @@ main {
 }
 
 .message-box {
-    /* padding: 0.5rem 0; */
     background-color: var(--light-gray);
     display: flex;
     align-items: center;
