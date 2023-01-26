@@ -32,7 +32,7 @@
                         </div><!-- CHIUSURA BUTTON BOX -->
                     </header><!-- CHIUSURA ASIDE HEADER -->
                     <div class="alert-box">
-                        <div class="circle">
+                        <div class="alert-icon">
                             <i class="fa-solid fa-bell-slash"></i>
                         </div><!-- CHIUSURA CIRCLE -->
                         <div class="text-box">
@@ -49,25 +49,23 @@
                                 <input @keyup="checkSearch()" v-model="searchText" type="text" placeholder="Cerca o inizia una nuova chat">
                             </div><!-- CHIUSURA SEARCH CONTAINER -->
                         </div><!-- CHIUSURA SEARCH BOX -->
-                        <div class="content-wrapper">
-                            <ul class="contact-list">
-                                <li
-                                class="contact" 
-                                v-for="(contact, index) in activeContacts"
-                                :class="{active: active == index}"
-                                @click="active = index"
-                                >
-                                    <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="'User' + contact.avatar + ' Propic'" class="propic">
-                                    <div class="text-box">
-                                        <p>{{contact.name}}</p>
-                                        <p class="secondary-text smallest-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <div class="date-box">
-                                        <p class="smallest-text secondary-text">12:00</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="contact-list">
+                            <li
+                            class="contact" 
+                            v-for="(contact, index) in activeContacts"
+                            :class="{active: active == index}"
+                            @click="active = index"
+                            >
+                                <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="'User' + contact.avatar + ' Propic'" class="propic">
+                                <div class="text-box">
+                                    <p>{{contact.name}}</p>
+                                    <p class="secondary-text smallest-text">Ultimo messaggio inviato</p>
+                                </div>
+                                <div class="date-box">
+                                    <p class="smallest-text secondary-text">12:00</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div><!-- CHIUSURA CONTACT BOX -->
                     
                 </aside>

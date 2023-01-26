@@ -69,7 +69,6 @@ body * {
     color: var(--secondary-text);
 }
 
-
 /* HEADERS */
 main header,
 aside header {
@@ -87,13 +86,13 @@ aside header .user-info {
 
 main header .button-box,
 aside header .button-box {
-    padding-right: 2rem;
+    padding-right: 1rem;
     display: flex;
 }
 
 main header .button-box button,
 aside header .button-box button {
-    padding-left: 1.5rem;
+    padding: 1rem;
     background-color: transparent;
     border: none;
     color: var(--medium-gray);
@@ -101,21 +100,25 @@ aside header .button-box button {
     align-items: center;
 }
 
+main header .button-box button:hover,
+aside header .button-box button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 /* ASIDE */
 aside {
-    height: 100%;
     width: 30%;
     display: flex;
     flex-direction: column;
 }
 
-aside .alert-box {
+.alert-box {
     padding: 1rem;
     background-color: var(--light-blue);
     display: flex;
 }
 
-aside .alert-box .circle {
+.alert-box .alert-icon {
     margin-right: 1rem;
     height: 3rem;
     width: 3rem;
@@ -126,7 +129,7 @@ aside .alert-box .circle {
     border-radius: 50%;
 }
 
-aside .contact-box {
+.contact-box {
     background-color: white;
     flex-grow: 1;
     overflow-y: auto;
@@ -134,53 +137,51 @@ aside .contact-box {
     flex-direction: column;
 }
 
-aside .contact-box .search-box {
+.contact-box .search-box {
     padding: 0.5rem;
     background-color: var(--nq-white);
-    flex-grow: 0;
 }
 
-aside .contact-box .search-box .search-container {
+.contact-box .search-box .search-container {
     background-color: white;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
     display: flex;
-    align-items: center;
 }
 
-aside .contact-box .search-box .search-container i {
+.contact-box .search-box .search-container i {
     padding: 0.5rem 1rem;
     color: var(--medium-gray);
 }
 
-aside .contact-box .search-box .search-container input {
+.contact-box .search-box .search-container input {
     padding: 0.5rem 1rem;
     border: none;
     outline: none;
     flex-grow: 1;
 }
 
-aside .contact-box .content-wrapper {
-    flex-grow: 1;
+.contact-box .contact-list {
+    list-style: none;
+    background-color: white;
     overflow-y: auto;
 }
 
-aside .contact-box .contact-list {
-    list-style: none;
-    background-color: salmon;
-}
-
-aside .contact-box .contact-list .contact {
+.contact-box .contact-list .contact {
     padding: 0.5rem 1rem;
     background-color: white;
     cursor: pointer;
     display: flex;
 }
 
-aside .contact-box .contact-list .contact.active {
+.contact-box .contact-list .contact:hover {
+    background-color: var(--nq-white)
+}
+
+.contact-box .contact-list .contact.active {
     background-color: var(--light-gray);
 }
 
-aside .contact-box .contact-list .contact .text-box {
+.contact-box .contact-list .contact .text-box {
     flex-grow: 1;
 }
 
@@ -194,7 +195,7 @@ main {
     flex-direction: column;
 }
 
-main .conversation-box {
+.conversation-box {
     padding: 2rem;
     background-image: url('../img/mine.jpg');
     flex-grow: 1;
@@ -204,7 +205,7 @@ main .conversation-box {
     align-items: flex-start;
 }
 
-main .conversation-box .message {
+.conversation-box .message {
     margin-bottom: 2rem;
     padding: 1rem 3rem 1rem 1rem;
     max-width: 80%;
@@ -213,42 +214,48 @@ main .conversation-box .message {
     position: relative;
 }
 
-main .conversation-box .message.sent {
+.conversation-box .message.sent {
     background-color: #d5f9ba;
     align-self: flex-end;
 }
 
-main .conversation-box .message.received {
+.conversation-box .message.received {
     background-color: white;
-
 }
 
-main .conversation-box .message .date {
+.conversation-box .message .date {
     position:absolute;
     right: 0.5rem;
-    bottom: 0.5rem
+    bottom: 0.5rem;
 }
 
-main .message-box {
-    padding: 0.5rem 0;
+.message-box {
+    /* padding: 0.5rem 0; */
     background-color: var(--light-gray);
     display: flex;
+    align-items: center;
 }
 
-main .message-box input {
+.message-box input {
     padding: 0.7rem;
     border: none;
     outline: none;
     flex-grow: 1;
 }
 
-main .message-box button {
-    margin: 0 1.7rem;
+.message-box button {
+    padding: 1.5rem;
+    margin: 0 0.5rem;
     border: none;
     color: var(--dark-gray);
     background-color: transparent;
     cursor: pointer;
 }
+
+.message-box button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 
 
 
