@@ -190,7 +190,7 @@ createApp({
                 setTimeout (() => {
                     this.contacts[this.active].messages.push({
                         date: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
-                        message: 'Messaggio di risposta!',
+                        message: 'Ok!',
                         status: 'received'
                     });
                 }, 1000);
@@ -207,26 +207,16 @@ createApp({
             })
         },//checkSearch
         toggleMenu: function(index, menu) {
-            if (menu == 'dropMenu') {
-                if(this.dropMenu != index) {
-                    this.dropMenu = index;
-                }
-                else {
-                    this.dropMenu = null;
-                }
+            if(this[menu] != index) {
+                this[menu] = index;
             }
-            else if (menu == 'chatMenu') {
-                if(this.chatMenu != index) {
-                    this.chatMenu = index;
-                }
-                else {
-                    this.chatMenu = null;
-                }
+            else {
+                this[menu] = null;
             }
         },//toggleMenu
-        deleteMsg: function(array, index) {
+        deleteItem: function(array, index, menu) {
             array.splice(index, 1);
-            this.dropMenu = null;
+            this[menu] = null;
         },//deleteMsg
         getLastMessage: function(contact) {
             if( contact.messages.length > 0) {
