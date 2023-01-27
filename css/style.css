@@ -63,8 +63,8 @@ body * {
 
 .preview-text {
     width: 80%;
+    overflow:hidden;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
 }
 
@@ -75,7 +75,6 @@ body * {
 .smallest-text {
     margin-top: 0.2rem;
     font-size: 0.7rem;
-    line-height: 0.5rem;
 }
 
 .secondary-text {
