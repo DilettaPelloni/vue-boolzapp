@@ -215,12 +215,13 @@ createApp({
             else {
                 this[visibleIndex] = null;
             }
-        },//toggleMenu
-        deleteItem: function(array, index, menu1, menu2) {
+        },//toggleVisibility
+        deleteItem: function(array, index, menu1, menu2, menu3) {
             array.splice(index, 1);
             this[menu1] = null;
             this[menu2] = null;
-        },//deleteMsg
+            this[menu3] = null;
+        },//deleteItem
         getLastMessage: function(contact) {
             if( contact.messages.length > 0) {
                 return contact.messages[contact.messages.length - 1].message;
