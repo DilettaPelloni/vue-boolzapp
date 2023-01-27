@@ -216,11 +216,11 @@ createApp({
                 this[visibleIndex] = null;
             }
         },//toggleVisibility
-        deleteItem: function(array, index, menu1, menu2, menu3) {
+        deleteItem: function(array, index, ...menu) {
             array.splice(index, 1);
-            this[menu1] = null;
-            this[menu2] = null;
-            this[menu3] = null;
+            menu.forEach((menu) => {
+                this[menu] = null;
+            })
         },//deleteItem
         getLastMessage: function(contact) {
             if( contact.messages.length > 0) {
