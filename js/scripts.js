@@ -7,7 +7,7 @@ createApp({
             unread: null,
             dropMenu: null,
             chatMenu: null,
-            active: 0,
+            active: null,
             newMessage: '',
             searchText: '',
             contacts: [
@@ -223,13 +223,10 @@ createApp({
         },//deleteMsg
         getLastMessage: function(contact) {
             if( contact.messages.length > 0) {
-                if (contact.messages[contact.messages.length - 1].message.length > 35) {
-                    return contact.messages[contact.messages.length - 1].message.substring(0, 35) + ' ...';
-                }
                 return contact.messages[contact.messages.length - 1].message;
             }
             else {
-                return 'Nessun messaggio'
+                return 'Nessun messaggio in questa chat'
             }
         },//getLastMessage
         getLastDate: function(contact) {

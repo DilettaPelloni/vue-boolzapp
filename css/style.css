@@ -61,6 +61,13 @@ body * {
     font-weight: bold;
 }
 
+.preview-text {
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .small-text {
     font-size: 0.9rem;
 }
@@ -250,6 +257,26 @@ main {
     width: 70%;
     border-left: 0.5px solid var(--medium-gray);
     background-color: darkcyan;
+}
+
+.welcome-box {
+    padding: 2rem;
+    height: 100%;
+    border-bottom: 1rem solid #009688;
+    background-color: var(--nq-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-box h2,
+.welcome-box p {
+    color: #009688;
+}
+
+.chat-box {
+    height: 100%;
     display: flex;
     flex-direction: column;
 }

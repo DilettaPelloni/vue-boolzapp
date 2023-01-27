@@ -62,7 +62,7 @@
                                     <p :class="{'bold': unread == index}">
                                         {{contact.name}}
                                     </p>
-                                    <p class="secondary-text smallest-text" :class="{'bold': unread == index}">
+                                    <p class="secondary-text smallest-text preview-text" :class="{'bold': unread == index}">
                                         {{getLastMessage(contact)}}
                                     </p>
                                 </div>
@@ -95,48 +95,55 @@
                 </aside>
 
                 <main>
-                    <header>
-                        <div class="active-chat-info">
-                            <img :src="'img/avatar' + contacts[active].avatar +'.jpg'" :alt="'User' + contacts[active].avatar + 'Propic'" class="propic">
-                            <div class="text-box">
-                                <p class="small-text">{{contacts[active].name}}</p>
-                                <p class="smallest-text secondary-text">Ultimo accesso alle 12:00</p>
-                            </div>
-                        </div><!-- CHIUSURA USER INFO -->
-                        <div class="button-box">
-                            <button><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
-                            <button><i class="fa-solid fa-paperclip fa-xl"></i></button>
-                            <button><i class="fa-solid fa-ellipsis-vertical fa-xl"></i></button>
-                        </div><!-- CHIUSURA BUTTON BOX -->
-                    </header><!-- CHIUSURA MAIN HEADER -->
-                    <div class="conversation-box">
-                        <div class="message"
-                        v-for="(message, index) in contacts[active].messages"
-                        @contextmenu.prevent="toggleVisibility(index, 'dropMenu')"
-                        :class="{
-                            sent: message.status == 'sent',
-                            received: message.status == 'received'}"
-                        >
-                            <p>{{message.message}}</p>
-                            <span class="date secondary-text smallest-text">{{message.date.slice(11,16)}}</span>
-                            <button @click="toggleVisibility(index, 'dropMenu')">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
-                            <div class="drop" v-if="dropMenu == index">
-                                <p class="small-text" @click="deleteItem(contacts[active].messages, index, 'dropMenu')">
-                                    Cancella messaggio
-                                </p>
+                    <div class="welcome-box" v-if="active == null">
+                        <h2>Benvenuto su Boolzap</h2>
+                        <p>Fai click su un chat per vedere i messaggi!</p>
+                        <img src="img/Full Inbox _Flatline.png" alt="full_inbox">
+                    </div>
+                    <div class="chat-box" v-else>
+                        <header>
+                            <div class="active-chat-info">
+                                <img :src="'img/avatar' + contacts[active].avatar +'.jpg'" :alt="'User' + contacts[active].avatar + 'Propic'" class="propic">
+                                <div class="text-box">
+                                    <p class="small-text">{{contacts[active].name}}</p>
+                                    <p class="smallest-text secondary-text">Ultimo accesso alle 12:00</p>
+                                </div>
+                            </div><!-- CHIUSURA USER INFO -->
+                            <div class="button-box">
+                                <button><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+                                <button><i class="fa-solid fa-paperclip fa-xl"></i></button>
+                                <button><i class="fa-solid fa-ellipsis-vertical fa-xl"></i></button>
+                            </div><!-- CHIUSURA BUTTON BOX -->
+                        </header><!-- CHIUSURA MAIN HEADER -->
+                        <div class="conversation-box">
+                            <div class="message"
+                            v-for="(message, index) in contacts[active].messages"
+                            @contextmenu.prevent="toggleVisibility(index, 'dropMenu')"
+                            :class="{
+                                sent: message.status == 'sent',
+                                received: message.status == 'received'}"
+                            >
+                                <p>{{message.message}}</p>
+                                <span class="date secondary-text smallest-text">{{message.date.slice(11,16)}}</span>
+                                <button @click="toggleVisibility(index, 'dropMenu')">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <div class="drop" v-if="dropMenu == index">
+                                    <p class="small-text" @click="deleteItem(contacts[active].messages, index, 'dropMenu')">
+                                        Cancella messaggio
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="message-box">
-                        <button>
-                            <i class="fa-regular fa-face-smile fa-xl"></i>
-                        </button>
-                        <input v-model="newMessage" @keyup.enter="sendMessage()" type="text" placeholder="Scrivi un messaggio">
-                        <button>
-                            <i class="fa-solid fa-microphone fa-xl"></i>
-                        </button>
+                        <div class="message-box">
+                            <button>
+                                <i class="fa-regular fa-face-smile fa-xl"></i>
+                            </button>
+                            <input v-model="newMessage" @keyup.enter="sendMessage()" type="text" placeholder="Scrivi un messaggio">
+                            <button>
+                                <i class="fa-solid fa-microphone fa-xl"></i>
+                            </button>
+                        </div>
                     </div>
                 </main>
 
