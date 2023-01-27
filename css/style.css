@@ -19,7 +19,7 @@
 /* GENERALE */
 body {
     height: 100vh;
-    background: rgb(0,150,136);
+    background: #009688;
     background: linear-gradient(180deg, rgba(0,150,136,1) 20%, rgba(218,219,212,1) 20%);
     display: flex;
     justify-content: center;
@@ -55,6 +55,10 @@ button{
 /* TESTO */
 body * {
     font-family: 'Open Sans', sans-serif;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 .small-text {
@@ -189,24 +193,36 @@ aside {
     flex-grow: 1;
 }
 
+.contact-box .contact-list .contact .absolute-box {
+    position: absolute;
+    bottom: 0.2rem;
+    right: 0.5rem;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+}
+
+.contact-box .contact-list .contact .unread {
+    margin-right: 0.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    background-color: #009688;
+}
+
 .contact-box .contact-list .contact button {
     height: 2rem;
     width: 2rem;
     line-height: 2rem;
     color: white;
     background-color: transparent;
-    opacity: 0;
     border: none;
     border-radius: 50%;
-    position: absolute;
-    bottom: 0.2rem;
-    right: 0.5rem;
-    z-index: 20;
 }
 
 .contact-box .contact-list .contact:hover button {
     background-color: var(--light-green);
-    opacity: 1;
 }
 
 .contact-box .contact-list .contact .drop {
@@ -224,7 +240,7 @@ aside {
     padding: 0.5rem;
 }
 
-.contact-box .contact-list .contact .drop:hover > p {
+.contact-box .contact-list .contact .drop > p:hover {
     background-color: var(--light-red);
 }
 

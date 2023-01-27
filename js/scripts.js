@@ -3,6 +3,8 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            showByIndex:null,
+            unread: null,
             dropMenu: null,
             chatMenu: null,
             active: 0,
@@ -206,17 +208,18 @@ createApp({
                 }
             })
         },//checkSearch
-        toggleMenu: function(index, menu) {
-            if(this[menu] != index) {
-                this[menu] = index;
+        toggleVisibility: function(index, visibleIndex) {
+            if(this[visibleIndex] != index) {
+                this[visibleIndex] = index;
             }
             else {
-                this[menu] = null;
+                this[visibleIndex] = null;
             }
         },//toggleMenu
-        deleteItem: function(array, index, menu) {
+        deleteItem: function(array, index, menu1, menu2) {
             array.splice(index, 1);
-            this[menu] = null;
+            this[menu1] = null;
+            this[menu2] = null;
         },//deleteMsg
         getLastMessage: function(contact) {
             if( contact.messages.length > 0) {

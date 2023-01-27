@@ -1,12 +1,12 @@
 # vue-boolzapp
 
+## Implementazioni bonus
 
-Vorrei implementare un menu che si apre al click destro sul contatto o al click sinistro su un bottone che appare in hover (sempre sul contatto).
-Il menù offre 2 opzioni:
-    - elimina chat: permette di cancellare il contatto dalla lista di contatti
-    - segna come da leggere: fa comparire un pallino verde sul contatto e iltesto dell'ultimo mesaggio diventa grassetto (non so se riesco a fare sto punto, ma ci provo)
+- al click destro su un contatto o cliccando sul bottone che appare in hover si apre un sottomenu che offre queste opzioni:
+  - cancellare il contatto: toglie il contatto dalla lista dei contatti. Non sarà più visibile nemmeno ricercandolo
+  - segnare come da leggere: fa apparire un pallino verde sul contatto e il testo mostrato nel contatto diventa grassetto. Facendo di nuovo click, tutto torna allo stato originale
+- l'anteprima dell'ultimo messaggio che si vede nei contatti elencati a sinistra viene troncata e conclusa con '...' se è troppo lunga
+- il menu a scomparsa dei messaggi si apre e chiude anche facendo click destro sul messaggio
 
-Intanto che facevo le cose, ho notato che l'anteprima dell'ultimo messaggio che si vede nei contatti, se il testo è lungo, va su due righe. Questo ha urtato il mio disturbo ossessivo compulsivo.
-Quindi ho fatto in modo che se il testo è più lungo di un tot di caratteri ne mostra solo i primi 34 e poi mette i tre puntini. 
 
-    LET'S GOOOOOOOOOOOOOOOO
+# LET'S GOOOOOOOOOOOOOOOO

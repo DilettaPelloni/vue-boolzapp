@@ -50,29 +50,42 @@
                             </div><!-- CHIUSURA SEARCH CONTAINER -->
                         </div><!-- CHIUSURA SEARCH BOX -->
                         <ul class="contact-list">
-                            <li
-                            class="contact" 
+                            <li class="contact" 
                             v-for="(contact, index) in activeContacts"
                             :class="{active: active == index}"
                             @click="active = index"
-                            @contextmenu.prevent="toggleMenu(index, 'chatMenu')"
+                            @contextmenu.prevent="toggleVisibility(index, 'chatMenu')"
+                            @mouseover="showByIndex = index" @mouseout="showByIndex = null"
                             >
                                 <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="'User' + contact.avatar + ' Propic'" class="propic">
                                 <div class="text-box">
-                                    <p>{{contact.name}}</p>
-                                    <p class="secondary-text smallest-text">{{getLastMessage(contact)}}</p>
+                                    <p :class="{'bold': unread == index}">
+                                        {{contact.name}}
+                                    </p>
+                                    <p class="secondary-text smallest-text" :class="{'bold': unread == index}">
+                                        {{getLastMessage(contact)}}
+                                    </p>
                                 </div>
                                 <div class="date-box">
                                     <p class="smallest-text secondary-text">{{getLastDate(contact)}}</p>
                                 </div>
-                                <button @click.stop="toggleMenu(index, 'chatMenu')">
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                </button>
+                                <div class="absolute-box">
+                                    <div class="unread" v-if="unread == index"></div>
+                                    <button
+                                    v-show="showByIndex == index"
+                                    @click.stop="toggleVisibility(index, 'chatMenu')"
+                                    >
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                </div>
                                 <div class="drop" v-if="chatMenu == index">
                                     <p class="small-text"
-                                    @click="deleteItem(contacts, index, 'chatMenu')"
-                                    >
+                                    @click="deleteItem(contacts, index, 'chatMenu', 'unread')">
                                         Cancella chat
+                                    </p>
+                                    <p class="small-text"
+                                    @click="toggleVisibility(index, 'unread'), chatMenu = null ">
+                                        Segna come da leggere
                                     </p>
                                 </div>
                             </li>
@@ -97,16 +110,16 @@
                         </div><!-- CHIUSURA BUTTON BOX -->
                     </header><!-- CHIUSURA MAIN HEADER -->
                     <div class="conversation-box">
-                        <div
+                        <div class="message"
                         v-for="(message, index) in contacts[active].messages"
-                        class="message"
+                        @contextmenu.prevent="toggleVisibility(index, 'dropMenu')"
                         :class="{
                             sent: message.status == 'sent',
                             received: message.status == 'received'}"
                         >
                             <p>{{message.message}}</p>
                             <span class="date secondary-text smallest-text">{{message.date.slice(11,16)}}</span>
-                            <button @click="toggleMenu(index, 'dropMenu')">
+                            <button @click="toggleVisibility(index, 'dropMenu')">
                                 <i class="fa-solid fa-chevron-down"></i>
                             </button>
                             <div class="drop" v-if="dropMenu == index">
